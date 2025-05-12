@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>FCIT Major Selector</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="hero">
+        <h1>Find Your Perfect FCIT Major</h1>
+        <p>Answer 20 quick questions and discover which major fits you best.</p>
+        <button id="startBtn" class="btn">Start Quiz</button>
+    </header>
+
+    <main id="quizContainer" class="hidden">
+        <div id="questionBox">
+            <h2 id="questionText"></h2>
+            <div id="choices"></div>
+        </div>
+        <button id="nextBtn" class="btn">Next</button>
+    </main>
+
+    <section id="resultContainer" class="hidden">
+        <h2>Your Results</h2>
+        <canvas id="resultChart" width="400" height="280"></canvas>
+        <h3 id="bestMajorText"></h3>
+        <p id="majorDesc"></p>
+        <button id="restartBtn" class="btn">Restart Quiz</button>
+    </section>
+
+    <footer>
+        <small>&copy; 2025 FCIT Major Selector</small>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
