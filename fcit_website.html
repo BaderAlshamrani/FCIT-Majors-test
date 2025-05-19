@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCIT - King Abdulaziz University</title>
+    <style>
+        :root {
+            --green: #006400;
+            --white: #ffffff;
+            --brown: #8B4513;
+            --light-green: #90EE90;
+            --light-brown: #DEB887;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--green);
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--green);
+            font-size: 24px;
+        }
+        
+        nav {
+            margin-top: 20px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--white);
+            color: var(--green);
+        }
+        
+        main {
+            min-height: calc(100vh - 220px);
+            padding: 40px 0;
+        }
+        
+        footer {
+            background-color: var(--brown);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        h1, h2, h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-green);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            color: var(--brown);
+        }
+        
+        /* Majors page styles */
+        .major-container {
+            margin-top: 30px;
+        }
+        
+        .major-card {
+            background-color: var(--light-green);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .major-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .major-card h2 {
+            color: var(--brown);
+            border-bottom: 2px solid var(--brown);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .career-paths {
+            margin-top: 20px;
+            background-color: var(--white);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .career-paths h3 {
+            color: var(--brown);
+            margin-bottom: 10px;
+        }
+        
+        .career-paths ul {
+            padding-left: 20px;
+        }
+        
+        /* Quiz page styles */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light-green);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .options {
+            margin-top: 15px;
+        }
+        
+        .option {
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: var(--light-brown);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .option:hover {
+            background-color: var(--brown);
+            color: var(--white);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--green);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: var(--brown);
+            transform: translateY(-3px);
+        }
+        
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        /* About page styles */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background-color: var(--light-brown);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            background-color: var(--light-green);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .contact-info h2 {
+            color: var(--brown);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">FCIT</div>
+                <div>
+                    <h1>Faculty of Computing and Information Technology</h1>
+                    <p>King Abdulaziz University</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('majors')">Majors</a></li>
+                    <li><a href="#" onclick="showPage('quiz')">Major Quiz</a></li>
+                    <li><a href="#" onclick="showPage('about')">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Home Page Content -->
+            <div id="home" class="page active">
+                <div class="hero">
+                    <h1>Welcome to FCIT at King Abdulaziz University</h1>
+                    <p>Empowering the next generation of technology leaders through cutting-edge education and research</p>
+                </div>
+                
+                <div>
+                    <h2>About FCIT</h2>
+                    <p>The Faculty of Computing and Information Technology (FCIT) at King Abdulaziz University is one of the leading technology education institutions in Saudi Arabia. Established to meet the growing demands of the technology sector, FCIT has been at the forefront of providing quality education in computer science and information technology.</p>
+                    
+                    <p>Located in the vibrant city of Jeddah, FCIT offers state-of-the-art facilities and a conducive learning environment for students to excel in their chosen field of study. Our programs are designed to blend theoretical knowledge with practical skills, ensuring that graduates are well-prepared for the challenges of the rapidly evolving tech industry.</p>
+                    
+                    <p>With a distinguished faculty comprising experts from various computing disciplines, FCIT is committed to academic excellence, innovative research, and community service. Our vision is to be a global leader in computing education and research, contributing significantly to the knowledge economy of Saudi Arabia in line with Vision 2030.</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>Quality Education</h3>
+                        <p>FCIT offers internationally accredited programs designed to meet the highest standards of computing education. Our curriculum is regularly updated to reflect the latest developments in technology.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Research Opportunities</h3>
+                        <p>Students have access to numerous research opportunities under the guidance of experienced faculty members. FCIT houses several research centers focusing on emerging technologies.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Industry Connections</h3>
+                        <p>FCIT maintains strong connections with industry partners, providing students with internship and job placement opportunities. Regular industry seminars and workshops enhance the learning experience.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Majors Page Content -->
+            <div id="majors" class="page">
+                <div class="hero">
+                    <h1>Our Majors</h1>
+                    <p>Explore our comprehensive programs designed to prepare you for success in the digital world</p>
+                </div>
+                
+                <div class="major-container">
+                    <div class="major-card">
+                        <h2>Computer Science (CS)</h2>
+                        <p>The Computer Science program at FCIT provides students with a strong foundation in theoretical computer science and practical programming skills. The curriculum covers a wide range of topics including algorithms, data structures, operating systems, software engineering, and artificial intelligence.</p>
+                        
+                        <p>Students in the CS program develop critical thinking and problem-solving abilities, along with the technical skills needed to design and develop complex software systems. The program emphasizes both individual and team projects, preparing graduates for various roles in the software industry.</p>
+                        
+                        <div class="career-paths">
+                            <h3>Career Paths for Computer Science Students:</h3>
+                            <ul>
+                                <li>                   Software Developer/Engineer</li>
+                                <li> System Architect</li>
+                                <li> AI/Machine Learning Engineer</li>
+                                <li> Game Developer</li>
+                                <li> Research Scientist</li>
+                                <li> DevOps Engineer</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="major-card">
+                        <h2>Information Technology (IT)</h2>
+                        <p>The Information Technology program focuses on the practical application of computing technology in organizational settings. Students learn about network administration, system integration, database management, cybersecurity, and IT project management.</p>
+                        
+                        <p>This program equips students with the skills to design, implement, and manage information systems that support the operational and strategic goals of organizations. IT graduates are well-versed in both technical aspects and the business context of technology deployment.</p>
+                        
+                        <div class="career-paths">
+                            <h3>Career Paths for IT Graduates:</h3>
+                            <ul>
+                                <li>Network Administrator</li>
+                                <li>System Administrator</li>
+                                <li>IT Support Specialist</li>
+                                <li>Cloud Computing Specialist</li>
+                                <li>Database Administrator</li>
+                                <li>IT Project Manager</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="major-card">
+                        <h2>Information Systems (IS)</h2>
+                        <p>The Information Systems program bridges the gap between business and technology. Students learn how to analyze business requirements and design information systems that meet organizational needs. The curriculum includes courses in database design, business process modeling, enterprise systems, and business intelligence.</p>
+                        
+                        <p>IS graduates develop a unique combination of technical knowledge and business acumen, allowing them to serve as intermediaries between technical teams and business stakeholders. They are skilled in leveraging technology to solve business problems and create value.</p>
+                        
+                        <div class="career-paths">
+                            <h3>Career Paths for IS Graduates:</h3>
+                            <ul>
+                                <li>Business Systems Analyst</li>
+                                <li>ERP Consultant</li>
+                                <li>Data Analyst</li>
+                                <li>IT Consultant</li>
+                                <li>Information Systems Manager</li>
+                                <li>Business Intelligence Developer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quiz Page Content -->
+            <div id="quiz" class="page">
+                <div class="hero">
+                    <h1>Major Selection Quiz</h1>
+                    <p>Answer a few questions to help you determine which FCIT major might be the best fit for your interests and strengths</p>
+                </div>
+                
+                <div class="quiz-container">
+                    <div id="questions">
+                        <div class="question">
+                            <h3>1. What interests you most about computing?</h3>
+                            <div class="options">
+                                <label class="option">
+                                    <input type="radio" name="q1" value="cs"> Solving complex problems with algorithms and creating new software
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q1" value="it"> Setting up networks, managing systems, and ensuring technology works smoothly
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q1" value="is"> Understanding how technology can solve business problems and improve organizations
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <h3>2. Which of these activities would you most enjoy?</h3>
+                            <div class="options">
+                                <label class="option">
+                                    <input type="radio" name="q2" value="cs"> Designing and coding a new application from scratch
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q2" value="it"> Configuring and troubleshooting computer systems and networks
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q2" value="is"> Analyzing business processes and designing information systems to support them
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <h3>3. What subjects do you most enjoy studying?</h3>
+                            <div class="options">
+                                <label class="option">
+                                    <input type="radio" name="q3" value="cs"> Mathematics, algorithms, and programming languages
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q3" value="it"> Hardware, operating systems, and network infrastructure
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q3" value="is"> Business processes, data analysis, and organizational structures
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <h3>4. In a team project, which role would you prefer?</h3>
+                            <div class="options">
+                                <label class="option">
+                                    <input type="radio" name="q4" value="cs"> The developer who writes the core algorithms and code
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q4" value="it"> The technical expert who ensures all systems work together properly
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q4" value="is"> The analyst who identifies requirements and designs system specifications
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <h3>5. Which career path sounds most appealing to you?</h3>
+                            <div class="options">
+                                <label class="option">
+                                    <input type="radio" name="q5" value="cs"> Software Engineer, AI Specialist, or Game Developer
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q5" value="it"> Network Administrator, Systems Engineer, or Cybersecurity Specialist
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="q5" value="is"> Business Analyst, IT Consultant, or Database Administrator
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button id="submitQuiz" class="btn">Get Results</button>
+                    </div>
+                    
+                    <div id="result">
+                        <h2>Your Result</h2>
+                        <p id="resultText"></p>
+                        <div id="majorDescription"></div>
+                        <button id="retakeQuiz" class="btn">Retake Quiz</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- About Page Content -->
+            <div id="about" class="page">
+                <div class="hero">
+                    <h1>About Us</h1>
+                    <p>Learn more about the Faculty of Computing and Information Technology at King Abdulaziz University</p>
+                </div>
+                
+                <div class="about-section">
+                    <div>
+                        <h2>Our Vision</h2>
+                        <p>To be a global leader in computing education and research, contributing significantly to the knowledge economy of Saudi Arabia and supporting the goals of Vision 2030.</p>
+                        
+                        <h2>Our Mission</h2>
+                        <p>To provide high-quality education in computing and information technology, conduct innovative research, and serve the community through knowledge transfer and partnerships with industry and government sectors.</p>
+                        
+                        <h2>Our Values</h2>
+                        <ul>
+                            <li>Excellence in education and research</li>
+                            <li>Innovation and creativity</li>
+                            <li>Ethical use of technology</li>
+                            <li>Collaboration and teamwork</li>
+                            <li>Continuous improvement and lifelong learning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-image">
+                        FCIT Building Image
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <p><strong>Address:</strong> Faculty of Computing and Information Technology, King Abdulaziz University, Jeddah, Saudi Arabia</p>
+                    <p><strong>Email:</strong> info@fcit.kau.edu.sa</p>
+                    <p><strong>Phone:</strong> +966-12-XXXXXXX</p>
+                    <p><strong>Social Media:</strong> Follow us on Twitter, Facebook, and LinkedIn</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Faculty of Computing and Information Technology, King Abdulaziz University. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+                page.style.display = 'none';
+            });
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            selectedPage.classList.add('active');
+            selectedPage.style.display = 'block';
+            
+            // Update active nav link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.querySelector(`nav a[onclick="showPage('${pageId}')"]`).classList.add('active');
+        }
+        
+        // Initialize the page display
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home page by default
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById('home').style.display = 'block';
+            
+            // Quiz functionality
+            const submitQuizBtn = document.getElementById('submitQuiz');
+            const retakeQuizBtn = document.getElementById('retakeQuiz');
+            const questionsContainer = document.getElementById('questions');
+            const resultContainer = document.getElementById('result');
+            const resultText = document.getElementById('resultText');
+            const majorDescription = document.getElementById('majorDescription');
+            
+            submitQuizBtn.addEventListener('click', function() {
+                // Calculate results
+                const answers = {
+                    cs: 0,
+                    it: 0,
+                    is: 0
+                };
+                
+                // Count answers for each major
+                for(let i = 1; i <= 5; i++) {
+                    const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                    if(selectedOption) {
+                        answers[selectedOption.value]++;
+                    }
+                }
+                
+                // Determine the recommended major
+                let recommendedMajor = 'cs';
+                let maxCount = answers.cs;
+                
+                if(answers.it > maxCount) {
+                    recommendedMajor = 'it';
+                    maxCount = answers.it;
+                }
+                
+                if(answers.is > maxCount) {
+                    recommendedMajor = 'is';
+                }
+                
+                // Display results
+                if(recommendedMajor === 'cs') {
+                    resultText.innerHTML = '<strong>Computer Science (CS)</strong> might be the best fit for you!';
+                    majorDescription.innerHTML = `
+                        <p>Based on your responses, you seem to have a strong interest in problem-solving, algorithms, and software development. Computer Science would allow you to explore these areas deeply.</p>
+                        <p>In the CS program, you'll learn about:</p>
+                        <ul>
+                            <li>Advanced programming concepts and languages</li>
+                            <li>Algorithm design and analysis</li>
+                            <li>Software engineering principles</li>
+                            <li>Artificial intelligence and machine learning</li>
+                            <li>Computer graphics and visualization</li>
+                        </ul>
+                    `;
+                } else if(recommendedMajor === 'it') {
+                    resultText.innerHTML = '<strong>Information Technology (IT)</strong> might be the best fit for you!';
+                    majorDescription.innerHTML = `
+                        <p>Based on your responses, you seem to have a strong interest in systems, networks, and making technology work effectively. Information Technology would allow you to develop these practical skills.</p>
+                        <p>In the IT program, you'll learn about:</p>
+                        <ul>
+                            <li>Network design and administration</li>
+                            <li>System administration and cloud computing</li>
+                            <li>Cybersecurity</li>
+                            <li>IT infrastructure management</li>
+                            <li>Technical support and troubleshooting</li>
+                        </ul>
+                    `;
+                } else {
+                    resultText.innerHTML = '<strong>Information Systems (IS)</strong> might be the best fit for you!';
+                    majorDescription.innerHTML = `
+                        <p>Based on your responses, you seem to have a strong interest in how technology can support business needs and organizational goals. Information Systems would allow you to bridge the technical and business worlds.</p>
+                        <p>In the IS program, you'll learn about:</p>
+                        <ul>
+                            <li>Business process analysis and modeling</li>
+                            <li>Database design and management</li>
+                            <li>Enterprise systems and ERP</li>
+                            <li>Business intelligence and data analytics</li>
+                            <li>IT project management</li>
+                        </ul>
+                    `;
+                }
+                
+                // Show results
+                questionsContainer.style.display = 'none';
+                resultContainer.style.display = 'block';
+            });
+            
+            retakeQuizBtn.addEventListener('click', function() {
+                // Reset form and show questions again
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                resultContainer.style.display = 'none';
+                questionsContainer.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
